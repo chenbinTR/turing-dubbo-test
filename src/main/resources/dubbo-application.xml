@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="dyubbo-application"/>
+
+    <dubbo:reference id="turingApiAuthService" interface="com.turing.turingapi.authorization.TuringApiAuthService" version="1.0" url="121.199.52.145:23105" timeout="1000" connections="1" retries="0"/>
+    <dubbo:reference interface="com.turing.service.memory.OSMemoryService" url="" id="osMemoryService" version="1.0"/>
+    <dubbo:reference interface="com.turing.platform.cloud.service.OpenApiService" id="openApiServiceImpl"
+                     url="dubbo://120.26.161.190:20880" check="false"
+                     timeout="6000"/>
+    <!-- transcode -->
+    <dubbo:reference interface="com.turing.bmu.transcode.api.TranscodeService" check="false" url="dubbo://60.205.212.14:22303" id="transcodeService" timeout="2000" version="1.0"/>
+    <!--<dubbo:reference interface="com.turing.bmu.transcode.api.TranscodeService" check="false" url="dubbo://120.26.164.174:22303" id="transcodeService" timeout="2000" version="1.0"/>-->
+    <!--<dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="47.93.180.98:23001" id="chatService" timeout="2000" version="2.0"/>-->
+
+    <!-- chat -->
+    <!--<dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="dubbo://47.93.47.187:23001" id="chatService" timeout="2000" version="2.0"/>-->
+    <dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="dubbo://59.110.171.164:23001" id="chatService" timeout="2000" version="2.0"/>
+    <!--<dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="47.93.180.98:23001" id="chatService" timeout="2000" version="2.0"/>-->
+
+    <!-- similarity -->
+    <!--<dubbo:reference id="semanticSimilarityService" check="false" interface="com.turing.similarity.comm.service.SemanticSimilarityService" url="dubbo://47.93.47.187:33000" version="2.0" timeout="1000"/>-->
+    <!--<dubbo:reference id="semanticSimilarityService" check="false" interface="com.turing.similarity.comm.service.SemanticSimilarityService" url="dubbo://59.110.171.164:33000" version="2.0" timeout="1000"/>-->
+    <dubbo:reference id="semanticSimilarityService" check="false" interface="com.turing.similarity.comm.service.SemanticSimilarityService" url="dubbo://101.201.210.157:33000" version="2.0" timeout="1000"/>
+
+    <!-- semantic -->
+    <dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.93.47.187:30880" id="semanticService" version="1.1.2"/>
+    <!--<dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://:30880" id="semanticService" version="1.1.2"/>-->
+    <!--<dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.94.58.181:30880" id="semanticService" version="1.1.2"/>-->
+
+    <!-- dynamicConfig -->
+    <dubbo:reference interface="com.turing.semantic.service.api.DynamicConfigService" url="dubbo://47.93.47.187:30881" id="dynamicConfigService" version="1.1.2" timeout="1000"/>
+    <!--<dubbo:reference interface="com.turing.semantic.service.api.DynamicConfigService" url="dubbo://47.94.59.188:30881" id="dynamicConfigService" version="1.1.2" timeout="1000"/>-->
+    <!--<dubbo:reference interface="com.turing.semantic.service.api.DynamicConfigService" url="dubbo://47.94.59.188:30881" id="dynamicConfigService" version="1.1.2" timeout="1000"/>-->
+
+    <!-- logger -->
+    <!--<dubbo:reference interface="com.turing.platform.logger.api.CloudLogAcceptService" url="dubbo://101.200.130.142:29001" id="cloudLogAcceptService" check="false" retries="0" connections="1" timeout="3000"/>-->
+    <!--<dubbo:reference interface="com.turing.platform.logger.api.CloudLogAcceptService" url="dubbo://101.200.130.142:29001" id="cloudLogAcceptService" check="false" retries="0" connections="1" timeout="3000"/>-->
+    <dubbo:reference interface="com.turing.platform.logger.api.CloudLogAcceptService" url="dubbo://101.200.130.142:29001" id="cloudLogAcceptService" check="false" retries="0" connections="1" timeout="3000"/>
+</beans>
