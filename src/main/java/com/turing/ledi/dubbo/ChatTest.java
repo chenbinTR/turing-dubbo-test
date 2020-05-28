@@ -33,7 +33,7 @@ public class ChatTest {
             try{
                 String question = q.split("\t")[0];
                 ChatResult chatResult = reqChat(question);
-                Utils.writeToTxt("Q:\\logs\\alpha.txt", q+"\t"+chatResult.getAnswer()+"\t"+chatResult.getAppId()+"\t"+chatResult.getParseType());
+                Utils.writeToTxt("Q:\\logs\\prod-1.txt", q+"\t"+chatResult.getAnswer()+"\t"+chatResult.getAppId()+"\t"+chatResult.getParseType());
             }catch (Exception e){
                 e.printStackTrace();
 //                Utils.writeToTxt("Q:\\logs\\2.txt", q);
