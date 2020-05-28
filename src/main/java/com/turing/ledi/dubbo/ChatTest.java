@@ -11,12 +11,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author cb
  * @date 2018-07-19 15:16
  */
 public class ChatTest {
+    private static ExecutorService executorService = Executors.newFixedThreadPool(1);
     private static ClassPathXmlApplicationContext context;
     private static ChatService service;
     static{
@@ -25,18 +29,39 @@ public class ChatTest {
         context.start();
         service = context.getBean("chatService", ChatService.class);
     }
+    static class Task implements Runnable{
+        private String q;
+        public Task(String q){
+            this.q = q;
+        }
+        @Override
+        public void run() {
+            String outputFile = "Q:\\2.txt";
+            try{
+                ChatResult chatResult = reqChat(q);
+                Utils.writeToTxt(outputFile, q+"\t"+chatResult.getAnswer()+"\t"+chatResult.getAppId()+"\t"+chatResult.getParseType());
+            }catch (Exception e){
+                e.printStackTrace();
+                Utils.writeToTxt(outputFile, q);
+            }
+        }
+    }
     public static void main(String[] args) throws InterruptedException {
-        List<String> qs = Utils.readFileToList("Q:\\logs\\1.txt");
+        List<String> qs = Utils.readFileToList("Q:\\1.txt");
+        // 多线程处理
+//        for(String q:qs){
+//            Task task = new Task(q);
+//            executorService.execute(task);
+//        }
         int count = 0;
         for(String q:qs){
             System.out.println(count++);
             try{
-                String question = q.split("\t")[0];
-                ChatResult chatResult = reqChat(question);
-                Utils.writeToTxt("Q:\\logs\\prod-1.txt", q+"\t"+chatResult.getAnswer()+"\t"+chatResult.getAppId()+"\t"+chatResult.getParseType());
+                ChatResult chatResult = reqChat(q);
+                Utils.writeToTxt("Q:\\logs\\2.txt", q+"\t"+chatResult.getAnswer()+"\t"+chatResult.getAppId()+"\t"+chatResult.getParseType());
             }catch (Exception e){
                 e.printStackTrace();
-//                Utils.writeToTxt("Q:\\logs\\2.txt", q);
+                Utils.writeToTxt("Q:\\logs\\2.txt", q);
             }
 //            System.out.println(q);
 //            System.out.println(chatResult.getAnswer());
@@ -44,8 +69,8 @@ public class ChatTest {
 //            System.out.println(chatResult.getAnswerEmotionId());
 //            System.out.println(JSONObject.toJSONString(chatResult));
         }
-//        for(int i=0; i<10; i++){
-//            ChatResult chatResult = reqChat("你还知道");
+//        for(int i=0; i<1; i++){
+//            ChatResult chatResult = reqChat("最长寿的动物叫什么");
 //            System.out.println(chatResult.getAnswer());
 //            System.out.println(chatResult.getAppId()+"\t"+chatResult.getParseType());
 //            System.out.println(JSONObject.toJSONString(chatResult));
