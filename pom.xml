@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.turing</groupId>
-    <artifactId>dubbo-test</artifactId>
+    <artifactId>turing-dubbo-test</artifactId>
     <build>
         <plugins>
             <!--去除jar包中的配置文件信息-->
