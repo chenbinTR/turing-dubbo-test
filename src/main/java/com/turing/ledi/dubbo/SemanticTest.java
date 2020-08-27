@@ -20,13 +20,13 @@ public class SemanticTest extends TestBase{
     @Test
 	public void testSemantic() {
 		SemanticService service = context.getBean("semanticService", SemanticService.class);
-		long time = System.currentTimeMillis();
         List<Pattern> var2  = new ArrayList<>();
         var2.add(Pattern.SDEP);
-        BasisSemantic result = service.parseSemantic("空天",var2);
+        BasisSemantic result = service.parseSemantic("屏幕调到最亮",var2);
 		System.out.println(result.getTermList().toString());
-		long timeDif = System.currentTimeMillis() - time;
-		System.out.println(timeDif);
+		result.getTermList().forEach(e->{
+			System.out.println(e.getWord());
+		});
 	}
 
 	@Test

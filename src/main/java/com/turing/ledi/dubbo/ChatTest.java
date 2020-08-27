@@ -92,7 +92,7 @@ public class ChatTest {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        List<String> qs = Utils.readFileToList("Q:\\1.txt");
+        List<String> qs = Utils.readFileToList("Q:\\logs\\1.txt");
         // 多线程处理
 //        for(String q:qs){
 //            Task task = new Task(q);

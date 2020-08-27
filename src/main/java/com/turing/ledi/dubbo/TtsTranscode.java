@@ -36,25 +36,25 @@ public class TtsTranscode {
     }
 
     @Test
-    public void testJietong() {
-//        byte[] mp3Bytes = getFileBytes("Q:\\apple16k16bit.speex");
-        byte[] mp3Bytes = getFileBytes("Q:\\1.pcm");
+    public void testTranscode() {
+        String path = "Q:\\turing-tts\\speex\\";
+        String fileName = "out_apple_16k_1.pcm";
+        byte[] fileBytes = getFileBytes(path + fileName + ".spx");
         TransRequest transRequest = new TransRequest();
-        transRequest.setDatas(mp3Bytes);
-//        transRequest.setDataFormat(TransFormat.MP3_16);
-//        transRequest.setDataFormat(TransFormat.SPEEX);
-        transRequest.setDataFormat(TransFormat.PCM_16K_16BIT);
-        transRequest.setDestFormat(TransFormat.PCM_8K_16BIT);
-//        transRequest.setChannel("JieTongTtsEngine");
-//        transRequest.setChannel("aliSpeexConvert");
-        transRequest.setChannel("TulingTtsEngine");
-
+        transRequest.setDatas(fileBytes);
+        transRequest.setDataFormat(TransFormat.SPEEX);
+//        transRequest.setDataFormat(TransFormat.PCM_16K_16BIT);
+        transRequest.setDestFormat(TransFormat.PCM_16K_16BIT);
+//        transRequest.setDestFormat(TransFormat.MP3_16);
+        transRequest.setChannel("commonToPcm");
+//        transRequest.setChannel("TulingTtsEngine");
         transRequest.setGlobalId("1014659796625100");
+        transRequest.setQuality(8);
+        transRequest.setFrame(70);
         transRequest.setIndex(1);
-
         TransResponse transResponse = transcodeService.trans(transRequest);
-        System.out.println(JSON.toJSONString(transResponse));
-        bytesToFile("Q:\\", transResponse.getDatas(), "3alpha.pcm");
+        System.err.println(JSON.toJSONString(transResponse));
+        bytesToFile(path, transResponse.getDatas(), fileName + ".pcm");
         context.close();
     }
 

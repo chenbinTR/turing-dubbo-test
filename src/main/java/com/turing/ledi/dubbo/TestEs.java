@@ -11,7 +11,13 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.InetAddress;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -23,6 +29,52 @@ import java.util.Map;
  * @since
  */
 public class TestEs {
+
+    public static String httpPost(String param, String url, int connectTimeout, int readTimeout) {
+        OutputStreamWriter out = null;
+        BufferedReader in = null;
+        String result = "";
+        HttpURLConnection conn = null;
+        try {
+            URL realUrl = new URL(url);
+            conn = (HttpURLConnection) realUrl
+                    .openConnection();
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            conn.setConnectTimeout(connectTimeout);
+            conn.setReadTimeout(readTimeout);
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Auth-Token", "f8dfe5d353234c71ac9bafb410ae62de");
+            conn.connect();
+            out = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
+            out.write(param);
+            out.flush();
+            out.close();
+            in = new BufferedReader(new InputStreamReader(
+                    conn.getInputStream(), "UTF-8"));
+            String line;
+            while ((line = in.readLine()) != null) {
+                result += line;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+                if (in != null) {
+                    in.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return result;
+    }
+
     @Test
     public void testInsert() {
         String indexName = "nlp_book_search";
