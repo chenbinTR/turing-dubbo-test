@@ -21,7 +21,7 @@ import java.io.IOException;
  * @see
  * @since
  */
-public class TtsTranscode {
+public class TtsTest {
     private static ClassPathXmlApplicationContext context;
     private static TranscodeService transcodeService;
 
@@ -37,17 +37,14 @@ public class TtsTranscode {
 
     @Test
     public void testTranscode() {
-        String path = "Q:\\turing-tts\\speex\\";
-        String fileName = "out_apple_16k_1.pcm";
-        byte[] fileBytes = getFileBytes(path + fileName + ".spx");
+        String path = "C:\\Users\\CheN\\Downloads\\";
+        String fileName = "播放刘德华的歌";
+        byte[] fileBytes = getFileBytes(path + fileName + ".opus");
         TransRequest transRequest = new TransRequest();
         transRequest.setDatas(fileBytes);
-        transRequest.setDataFormat(TransFormat.SPEEX);
-//        transRequest.setDataFormat(TransFormat.PCM_16K_16BIT);
-        transRequest.setDestFormat(TransFormat.PCM_16K_16BIT);
-//        transRequest.setDestFormat(TransFormat.MP3_16);
+        transRequest.setDataFormat(TransFormat.OPUS);
+        transRequest.setDestFormat(TransFormat.PCM_8K_16BIT);
         transRequest.setChannel("commonToPcm");
-//        transRequest.setChannel("TulingTtsEngine");
         transRequest.setGlobalId("1014659796625100");
         transRequest.setQuality(8);
         transRequest.setFrame(70);

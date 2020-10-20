@@ -28,7 +28,7 @@ import java.util.Map;
  * @see
  * @since
  */
-public class TestEs {
+public class EsTest {
 
     public static String httpPost(String param, String url, int connectTimeout, int readTimeout) {
         OutputStreamWriter out = null;
