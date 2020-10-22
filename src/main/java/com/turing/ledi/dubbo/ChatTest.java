@@ -34,6 +34,15 @@ public class ChatTest {
     }
 
     @Test
+    public void testSingleChat() {
+        ChatResult chatResult = reqChat("陈三");
+        System.out.println(chatResult.getAnswer());
+        System.out.println(chatResult.getAppId() + "\t" + chatResult.getParseType());
+        System.out.println(chatResult.getAnswerEmotionId());
+        System.out.println(JSONObject.toJSONString(chatResult));
+    }
+
+    @Test
     public void reqHttp() {
         String url = "http://47.94.58.57:8999/chat/answer/find";
         String inputText = "Q:\\1.txt";
