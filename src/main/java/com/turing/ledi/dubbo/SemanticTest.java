@@ -16,7 +16,7 @@ import java.util.List;
  * @author LJL
  * @date 2016/3/17
  */
-public class SemanticTest extends TestBase{
+public class SemanticTest extends BaseTest {
     @Test
 	public void testSemantic() {
 		SemanticService service = context.getBean("semanticService", SemanticService.class);

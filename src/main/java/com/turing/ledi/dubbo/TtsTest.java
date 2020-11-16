@@ -37,13 +37,16 @@ public class TtsTest {
 
     @Test
     public void testTranscode() {
+        // the connection for speex between quality and frame
+        // quality=8 frame=70
+        // quality=5 frame=42
         String path = "C:\\Users\\CheN\\Downloads\\";
-        String fileName = "播放刘德华的歌";
-        byte[] fileBytes = getFileBytes(path + fileName + ".opus");
+        String fileName = "banana-mono-16bit-16k-009";
+        byte[] fileBytes = getFileBytes(path + fileName + ".speex");
         TransRequest transRequest = new TransRequest();
         transRequest.setDatas(fileBytes);
-        transRequest.setDataFormat(TransFormat.OPUS);
-        transRequest.setDestFormat(TransFormat.PCM_8K_16BIT);
+        transRequest.setDataFormat(TransFormat.SPEEX);
+        transRequest.setDestFormat(TransFormat.PCM_16K_16BIT);
         transRequest.setChannel("commonToPcm");
         transRequest.setGlobalId("1014659796625100");
         transRequest.setQuality(8);

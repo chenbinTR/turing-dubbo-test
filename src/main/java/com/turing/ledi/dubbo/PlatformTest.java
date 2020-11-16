@@ -14,7 +14,7 @@ import org.junit.Test;
  * @Description:
  * @date 2018-04-18 15:10
  */
-public class PlatformTest extends TestBase{
+public class PlatformTest extends BaseTest {
     @Test
     public void testPlatform() {
         OpenApiService openApiService = context.getBean("openApiServiceImpl", OpenApiService.class);

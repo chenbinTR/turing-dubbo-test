@@ -18,7 +18,7 @@ import java.util.List;
  * @see
  * @since
  */
-public class SimilarityTest extends TestBase {
+public class SimilarityTest extends BaseTest {
     private SemanticSimilarityService semanticSimilarityService;
 
     @Before

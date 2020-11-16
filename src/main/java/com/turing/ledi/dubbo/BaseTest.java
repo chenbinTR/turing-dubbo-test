@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @see
  * @since
  */
-public class TestBase {
+public class BaseTest {
     protected ClassPathXmlApplicationContext context;
 
     @Before
