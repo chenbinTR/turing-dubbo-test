@@ -91,7 +91,7 @@ public class SimilarityTest extends BaseTest {
 
     @Test
     public void testTowSentence() {
-        Pair<Source, Double> pair = semanticSimilarityService.getSimilarity("你好，看到了把abc", "你好，看到了把abc", RequestType.CHAT);
+        Pair<Source, Double> pair = semanticSimilarityService.getSimilarity("继续播放", "不用再播了", RequestType.CHAT);
         System.out.println(JSON.toJSONString(pair));
     }
 }
