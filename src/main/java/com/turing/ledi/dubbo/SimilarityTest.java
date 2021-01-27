@@ -69,8 +69,8 @@ public class SimilarityTest extends BaseTest {
     }
     @Test
     public void testQa() {
-        String[] tableNames = {"qa_common_type_11"};
-        SimilarityRequest similarityRequest = new SimilarityRequest("身体哪些部位能看出寿命长短", RequestType.QA_SKILL);
+        String[] tableNames = {"turing_faq_simi_smart"};
+        SimilarityRequest similarityRequest = new SimilarityRequest("人工服务", RequestType.FAQ_CS);
 //        SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("身体哪些部位能看出寿命长短", RequestType.QA_SKILL);
         similarityRequest.setTableNames(tableNames);
 //        try {
@@ -78,7 +78,7 @@ public class SimilarityTest extends BaseTest {
 //        } catch (Throwable throwable) {
 //            throwable.printStackTrace();
 //        }
-        SimilarityResult result = semanticSimilarityService.getQaSkillServiceSimilarity(similarityRequest);
+        SimilarityResult result = semanticSimilarityService.getCustomerServiceSimilarity(similarityRequest);
         List<SimiResultItem> resultItems = result.getResultItems();
         if (CollectionUtils.isNotEmpty(resultItems)) {
             for (SimiResultItem s : resultItems) {
