@@ -36,7 +36,7 @@ public class SimilarityTest extends BaseTest {
     @Test
     public void testChat() {
         String[] tableNames = {"chat_question"};
-        SimilarityRequest similarityRequest = new SimilarityRequest("A分到哪类垃圾", RequestType.CHAT);
+        SimilarityRequest similarityRequest = new SimilarityRequest("你说话呀", RequestType.CHAT);
 //            SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("武汉加油", RequestType.CHAT);
         similarityRequest.setTableNames(tableNames);
 //            similarityRequest.setUserAccount("3c8a7f5b3ddd4203b59846addc12d0e2");
