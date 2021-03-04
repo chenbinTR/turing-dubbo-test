@@ -1,6 +1,8 @@
 package com.turing.ledi.dubbo;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.turing.similarity.comm.data.process.ChatDataProcessService;
 import com.turing.similarity.comm.entity.*;
 import com.turing.similarity.comm.service.SemanticSimilarityService;
 import org.apache.commons.collections.CollectionUtils;
@@ -8,6 +10,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +23,13 @@ import java.util.List;
  */
 public class SimilarityTest extends BaseTest {
     private SemanticSimilarityService semanticSimilarityService;
+//    private ChatDataProcessService chatDataProcessService;
 
     @Before
     public void init() {
         System.out.println("simi init");
         semanticSimilarityService = context.getBean("semanticSimilarityService", SemanticSimilarityService.class);
+//        chatDataProcessService = context.getBean("chatDataProcessService", ChatDataProcessService.class);
     }
 
     @Test
@@ -35,21 +40,27 @@ public class SimilarityTest extends BaseTest {
 
     @Test
     public void testChat() {
-        String[] tableNames = {"chat_question"};
-        SimilarityRequest similarityRequest = new SimilarityRequest("你说话呀", RequestType.CHAT);
-//            SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("武汉加油", RequestType.CHAT);
+//        List<Scheme> schemes = new ArrayList<>();
+//        Scheme scheme = new Scheme();
+//        scheme.set
+//        chatDataProcessService.insert();
+        String[] tableNames = {"turing_scripts"};
+//        SimilarityRequest similarityRequest = new SimilarityRequest("中秋节的习俗都有哪些呢", RequestType.FAQ_DUP);
+        SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("给我读在花园的绘本", RequestType.FAQ_DUP);
         similarityRequest.setTableNames(tableNames);
-//            similarityRequest.setUserAccount("3c8a7f5b3ddd4203b59846addc12d0e2");
-        SimilarityResult result = semanticSimilarityService.getChatSimilarity(similarityRequest);
+        similarityRequest.setUserAccount("b79a94caa96e4e8692be89263cdbe82e");
+        SimilarityResult result = semanticSimilarityService.getFAQSimilarity(similarityRequest);
         List<SimiResultItem> resultItems = result.getResultItems();
+        System.out.println(JSONObject.toJSONString(result));
         if (CollectionUtils.isNotEmpty(resultItems)) {
             for (SimiResultItem s : resultItems) {
                 System.out.println(s.getQuestion() + "\t" + s.getMatchScore() + "\t" + s.getTotalScore() + "\t" + s.getId() + "\t" + s.getTableName());
             }
         } else {
-            System.out.println("resultItems is empty");
+            System.out.println(JSONObject.toJSONString(result));
         }
     }
+
     @Test
     public void testNlu() {
 //        String[] tableNames = {"chat_question"};
@@ -67,6 +78,7 @@ public class SimilarityTest extends BaseTest {
             System.out.println("resultItems is empty");
         }
     }
+
     @Test
     public void testQa() {
         String[] tableNames = {"turing_faq_simi_smart"};
