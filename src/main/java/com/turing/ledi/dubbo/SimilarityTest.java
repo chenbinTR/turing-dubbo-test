@@ -46,7 +46,7 @@ public class SimilarityTest extends BaseTest {
 //        chatDataProcessService.insert();
         String[] tableNames = {"turing_scripts"};
 //        SimilarityRequest similarityRequest = new SimilarityRequest("中秋节的习俗都有哪些呢", RequestType.FAQ_DUP);
-        SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("给我读在花园的绘本", RequestType.FAQ_DUP);
+        SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("中秋节快乐", RequestType.FAQ_DUP);
         similarityRequest.setTableNames(tableNames);
         similarityRequest.setUserAccount("b79a94caa96e4e8692be89263cdbe82e");
         SimilarityResult result = semanticSimilarityService.getFAQSimilarity(similarityRequest);
