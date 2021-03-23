@@ -26,10 +26,9 @@
     <!--<dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="47.93.180.98:23001" id="chatService" timeout="2000" version="2.0"/>-->
 
     <!-- similarity -->
-    <!--<dubbo:reference id="semanticSimilarityService" check="false" interface="com.turing.similarity.comm.service.SemanticSimilarityService" url="dubbo://47.93.47.187:33000" version="2.0" timeout="1000"/>-->
+<!--    <dubbo:reference id="semanticSimilarityService" check="false" interface="com.turing.similarity.comm.service.SemanticSimilarityService" url="dubbo://47.93.47.187:33000" version="2.0" timeout="1000"/>-->
     <!--<dubbo:reference id="semanticSimilarityService" check="false" interface="com.turing.similarity.comm.service.SemanticSimilarityService" url="dubbo://59.110.171.164:33000" version="2.0" timeout="1000"/>-->
     <dubbo:reference id="semanticSimilarityService" check="false" interface="com.turing.similarity.comm.service.SemanticSimilarityService" url="dubbo://101.201.101.84:33000" version="2.0" timeout="1000"/>
-<!--    <dubbo:reference id="chatDataProcessService" check="false" interface="com.turing.similarity.comm.data.process.ChatDataProcessService" url="dubbo://101.201.210.157:33000" version="2.0" timeout="1000"/>-->
 
     <!-- semantic -->
     <!--<dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.93.47.187:30880" id="semanticService" version="1.1.2"/>-->
@@ -46,4 +45,9 @@
     <!--<dubbo:reference interface="com.turing.platform.logger.api.CloudLogAcceptService" url="dubbo://101.200.130.142:29001" id="cloudLogAcceptService" check="false" retries="0" connections="1" timeout="3000"/>-->
     <!--<dubbo:reference interface="com.turing.platform.logger.api.CloudLogAcceptService" url="dubbo://101.200.130.142:29001" id="cloudLogAcceptService" check="false" retries="0" connections="1" timeout="3000"/>-->
     <dubbo:reference interface="com.turing.platform.logger.api.CloudLogAcceptService" url="dubbo://101.200.130.142:29001" id="cloudLogAcceptService" check="false" retries="0" connections="1" timeout="3000"/>
+
+    <!-- faq -->
+    <!--<dubbo:reference interface="com.turing.service.faq.api.FaqService" url="dubbo://60.205.58.146:25003" id="faqService" check="false" retries="0" connections="1" timeout="3000"/>-->
+    <!--<dubbo:reference interface="com.turing.service.faq.api.FaqService" url="dubbo://60.205.58.146:25003" id="faqService" check="false" retries="0" connections="1" timeout="3000"/>-->
+    <dubbo:reference interface="com.turing.service.faq.api.FaqService" url="dubbo://60.205.58.146:25003" id="faqService" check="false" retries="0" connections="1" timeout="3000" version="3.0"/>
 </beans>

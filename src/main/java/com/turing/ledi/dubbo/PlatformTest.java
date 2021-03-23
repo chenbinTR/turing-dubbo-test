@@ -7,6 +7,8 @@ import com.turing.platform.logger.api.CloudLogAcceptService;
 import com.turing.protocal.data.DataRequest;
 import com.turing.protocal.data.DataResult;
 import com.turing.service.data.DataService;
+import com.turing.service.faq.api.FaqService;
+import com.turing.service.faq.model.FaqRequest;
 import org.junit.Test;
 
 /**
@@ -55,5 +57,16 @@ public class PlatformTest extends BaseTest {
 //        DataResult result = service.getResponse(request);
 
         System.out.println(result);
+    }
+
+    @Test
+    public void testFaq(){
+        FaqService faqService = context.getBean("faqService", FaqService.class);
+        FaqRequest faqRequest = new FaqRequest();
+        faqRequest.setQuestion("业务发展如何");
+        faqRequest.setApiKey("dde0b179afa4430c8d52cb0eee59b228");
+
+        System.out.println(faqService.requestFaq(faqRequest).getAnswer());
+
     }
 }
