@@ -22,7 +22,7 @@ public class SemanticTest extends BaseTest {
 		SemanticService service = context.getBean("semanticService", SemanticService.class);
         List<Pattern> var2  = new ArrayList<>();
         var2.add(Pattern.SDEP);
-        BasisSemantic result = service.parseSemantic("屏幕调到最亮",var2);
+        BasisSemantic result = service.parseSemantic("I want to go home",var2);
 		System.out.println(result.getTermList().toString());
 		result.getTermList().forEach(e->{
 			System.out.println(e.getWord());

@@ -38,14 +38,13 @@ public class SimilarityTest extends BaseTest {
 
     @Test
     public void testQa() {
-        String[] tableNames = {"turing_faq_14","turing_faq_simi_03", "turing_faq_10"};
+        String[] tableNames = {"turing_faq_14","turing_faq_simi_14"};
 //        String[] tableNames = {"common_chat_question","chat_question"};
-        SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("业务发展如何", RequestType.FAQ_CS);
-//        SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("你几几年生的", RequestType.CHAT);
-//        SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("身体哪些部位能看出寿命长短", RequestType.QA_SKILL);
+//        SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("公司的社会责任", RequestType.FAQ_CS);
+        SimilarityRequest similarityRequest = new SimilarityRequestWithoutCache("公司的社会责任", RequestType.FAQ_CS);
         similarityRequest.setTableNames(tableNames);
 //        similarityRequest.setUserAccount("64563a7dda578f98c78e549a0c4e9189");
-        similarityRequest.setUserAccount("dde0b179afa4430c8d52cb0eee59b228");
+        similarityRequest.setUserAccount("a8de3e58c894461d86b0a7ae46f15540");
         SimilarityResult result = semanticSimilarityService.getFAQSimilarity(similarityRequest);
         System.out.println(JSONObject.toJSONString(result));
         List<SimiResultItem> resultItems = result.getResultItems();
@@ -58,7 +57,7 @@ public class SimilarityTest extends BaseTest {
 
     @Test
     public void testTowSentence() {
-        Pair<Source, Double> pair = semanticSimilarityService.getSimilarity("common_chat_question", "common_chat_question", RequestType.FAQ_CS);
+        Pair<Source, Double> pair = semanticSimilarityService.getSimilarity("公司的社会责任", "社会责任", RequestType.FAQ_CS);
         System.out.println(JSON.toJSONString(pair));
     }
 }
