@@ -38,7 +38,7 @@ public class SimilarityTest extends BaseTest {
 
     @Test
     public void testQa() {
-        String[] tableNames = {"turing_faq_14","turing_faq_simi_14"};
+        String[] tableNames = {"turing_faq_14", "turing_faq_simi_14"};
 //        String[] tableNames = {"common_chat_question","chat_question"};
 //        SimilarityRequestWithoutCache similarityRequest = new SimilarityRequestWithoutCache("公司的社会责任", RequestType.FAQ_CS);
         SimilarityRequest similarityRequest = new SimilarityRequestWithoutCache("公司的社会责任", RequestType.FAQ_CS);
@@ -57,7 +57,12 @@ public class SimilarityTest extends BaseTest {
 
     @Test
     public void testTowSentence() {
-        Pair<Source, Double> pair = semanticSimilarityService.getSimilarity("公司的社会责任", "社会责任", RequestType.FAQ_CS);
-        System.out.println(JSON.toJSONString(pair));
+        List<String> lines = Utils.readFileToList("E:\\1.txt");
+        for (String line : lines) {
+            String text1 = line.split("\t")[0];
+            String text2 = line.split("\t")[1];
+            Pair<Source, Double> pair = semanticSimilarityService.getSimilarity(text1, text2, RequestType.FAQ_DUP);
+            Utils.writeToTxt("E:\\1_1.txt", text1 + "\t" + text2 + "\t" + pair.getValue()+"\t"+pair.getLeft()+"\t"+pair.getRight()+"\t"+pair.getKey());
+        }
     }
 }

@@ -41,17 +41,17 @@ public class TtsTest {
         // quality=8 frame=70
         // quality=5 frame=42
         String path = "C:\\Users\\CheN\\Downloads\\";
-        String fileName = "banana-mono-16bit-16k-009";
-        byte[] fileBytes = getFileBytes(path + fileName + ".speex");
+        String fileName = "11";
+        byte[] fileBytes = getFileBytes(path + fileName + ".opus");
         TransRequest transRequest = new TransRequest();
         transRequest.setDatas(fileBytes);
-        transRequest.setDataFormat(TransFormat.SPEEX);
+        transRequest.setDataFormat(TransFormat.OPUS);
         transRequest.setDestFormat(TransFormat.PCM_16K_16BIT);
         transRequest.setChannel("commonToPcm");
         transRequest.setGlobalId("1014659796625100");
-        transRequest.setQuality(8);
-        transRequest.setFrame(70);
-        transRequest.setIndex(1);
+//        transRequest.setQuality(8);
+//        transRequest.setFrame(70);
+//        transRequest.setIndex(1);
         TransResponse transResponse = transcodeService.trans(transRequest);
         System.err.println(JSON.toJSONString(transResponse));
         bytesToFile(path, transResponse.getDatas(), fileName + ".pcm");
