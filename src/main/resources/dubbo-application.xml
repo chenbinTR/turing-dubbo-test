@@ -31,10 +31,17 @@
     <dubbo:reference id="semanticSimilarityService" check="false" interface="com.turing.similarity.comm.service.SemanticSimilarityService" url="dubbo://101.201.101.84:33000" version="2.0" timeout="1000"/>
 
     <!-- semantic -->
-    <!--<dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.93.47.187:30880" id="semanticService" version="1.1.2"/>-->
+    <dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.93.47.187:30880" id="semanticService" version="1.1.2"/>
     <!--<dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://:30880" id="semanticService" version="1.1.2"/>-->
-    <dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.94.58.181:30880" id="semanticService" version="1.1.2"/>
+<!--    <dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.94.58.181:30880" id="semanticService" version="1.1.2"/>-->
     <!--<dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.94.59.188:30880" id="semanticService" version="1.1.2"/>-->
+
+    <!-- multi-semantic -->
+    <dubbo:reference interface="com.turing.semantic.service.api.MultiSemanticService" url="dubbo://47.93.47.187:30880" id="multiSemanticService" version="1.1.2"/>
+    <!--<dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://:30880" id="semanticService" version="1.1.2"/>-->
+    <!--    <dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.94.58.181:30880" id="semanticService" version="1.1.2"/>-->
+    <!--<dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.94.59.188:30880" id="semanticService" version="1.1.2"/>-->
+
 
     <!-- dynamicConfig -->
     <dubbo:reference interface="com.turing.semantic.service.api.DynamicConfigService" url="dubbo://47.93.47.187:30881" id="dynamicConfigService" version="1.1.2" timeout="1000"/>

@@ -56,6 +56,22 @@ public class SimilarityTest extends BaseTest {
     }
 
     @Test
+    public void testBizFaq() {
+        String[] tableNames = {"turing_scripts"};
+        SimilarityRequest similarityRequest = new SimilarityRequestWithoutCache("向左看", RequestType.FAQ_DUP);
+        similarityRequest.setTableNames(tableNames);
+        similarityRequest.setUserAccount("1c09c0c54ff04154a03590a0bb4f45eb");
+        SimilarityResult result = semanticSimilarityService.getFAQSimilarity(similarityRequest);
+        System.out.println(JSONObject.toJSONString(result));
+        List<SimiResultItem> resultItems = result.getResultItems();
+        if (CollectionUtils.isNotEmpty(resultItems)) {
+            for (SimiResultItem s : resultItems) {
+                System.out.println(s.getQuestion() + "\t" + s.getMatchScore() + "\t" + s.getTotalScore() + "\t" + s.getId() + "\t" + s.getTableName());
+            }
+        }
+    }
+
+    @Test
     public void testTowSentence() {
         List<String> lines = Utils.readFileToList("E:\\1.txt");
         for (String line : lines) {
