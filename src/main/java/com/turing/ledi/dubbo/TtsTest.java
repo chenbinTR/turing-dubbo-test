@@ -40,19 +40,29 @@ public class TtsTest {
         // the connection for speex between quality and frame
         // quality=8 frame=70
         // quality=5 frame=42
-        String path = "C:\\Users\\CheN\\Downloads\\";
-        String fileName = "11";
-        byte[] fileBytes = getFileBytes(path + fileName + ".opus");
-        TransRequest transRequest = new TransRequest();
-        transRequest.setDatas(fileBytes);
-        transRequest.setDataFormat(TransFormat.OPUS);
-        transRequest.setDestFormat(TransFormat.PCM_16K_16BIT);
-        transRequest.setChannel("commonToPcm");
-        transRequest.setGlobalId("1014659796625100");
+        String path = "E:\\";
+        String fileName = "1";
+        byte[] fileBytes = getFileBytes(path + fileName + ".amr");
+//        TransRequest transRequest = new TransRequest();
+//        transRequest.setDatas(fileBytes);
+//        transRequest.setDataFormat(TransFormat.OPUS);
+//        transRequest.setDestFormat(TransFormat.PCM_16K_16BIT);
+//        transRequest.setChannel("commonToPcm");
+//        transRequest.setGlobalId("1014659796625100");
+
+
+        TransRequest request = new TransRequest();
+        request.setDatas(fileBytes);
+        request.setDataFormat(TransFormat.AMR_16K);
+        request.setDestFormat(TransFormat.PCM_16K_16BIT);
+        request.setChannel("commonToPcm");
+        request.setGlobalId("123231232");
+        TransResponse response = transcodeService.trans(request);
+
 //        transRequest.setQuality(8);
 //        transRequest.setFrame(70);
 //        transRequest.setIndex(1);
-        TransResponse transResponse = transcodeService.trans(transRequest);
+        TransResponse transResponse = transcodeService.trans(request);
         System.err.println(JSON.toJSONString(transResponse));
         bytesToFile(path, transResponse.getDatas(), fileName + ".pcm");
         context.close();
