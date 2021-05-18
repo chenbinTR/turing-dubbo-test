@@ -1,4 +1,4 @@
-package com.turing.ledi.dubbo;
+package com.turing.dubbo;
 
 import org.junit.Before;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

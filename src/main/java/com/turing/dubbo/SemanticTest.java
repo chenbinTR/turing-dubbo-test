@@ -1,4 +1,4 @@
-package com.turing.ledi.dubbo;
+package com.turing.dubbo;
 
 import com.alibaba.fastjson.JSON;
 import com.turing.dialogue.protocol.entity.BasisSemantic;
@@ -28,6 +28,20 @@ public class SemanticTest extends BaseTest {
         var2.add(Pattern.SDEP);
         List<MultiSegment> multiSegmentList = service.multiSegment("我爱北京天安门");
         System.out.println(JSON.toJSONString(multiSegmentList));
+    }
+
+    @Test
+    public void testMultiSemanticEnglish() {
+        MultiSemanticService service = context.getBean("multiSemanticService", MultiSemanticService.class);
+        List<Pattern> var2 = new ArrayList<>();
+        var2.add(Pattern.SDEP);
+        List<MultiSegment> multiSegmentList = service.multiSegmentEnglish("with a pinch of salt test word many years ago, when the online business first became popular among the public");
+        System.out.println(JSON.toJSONString(multiSegmentList));
+    }
+
+    @Test
+    public void testDictSemantic(){
+
     }
 
     @Test

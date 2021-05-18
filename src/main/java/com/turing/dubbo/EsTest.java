@@ -1,4 +1,4 @@
-package com.turing.ledi.dubbo;
+package com.turing.dubbo;
 
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;

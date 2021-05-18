@@ -1,4 +1,4 @@
-package com.turing.ledi.dubbo;
+package com.turing.dubbo;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;

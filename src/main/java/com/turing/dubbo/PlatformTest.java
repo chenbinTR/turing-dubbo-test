@@ -1,4 +1,4 @@
-package com.turing.ledi.dubbo;
+package com.turing.dubbo;
 
 import com.turing.platform.base.util.JsonUtils;
 import com.turing.platform.cloud.entity.CloudLog;

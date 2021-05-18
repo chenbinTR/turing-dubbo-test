@@ -1,4 +1,4 @@
-package com.turing.ledi.dubbo;
+package com.turing.dubbo;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -9,7 +9,6 @@ import com.turing.utils.TuringNlpUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.neo4j.cypher.internal.v3_4.functions.E;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.net.URLEncoder;

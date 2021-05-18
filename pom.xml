@@ -4,13 +4,37 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>com.turing.base</groupId>
-        <artifactId>turing-parent</artifactId>
-        <version>2.0-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.18.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.turing</groupId>
     <artifactId>turing-dubbo-test</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- 系统常量管理 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <!-- end -->
+    </properties>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Releases</name>
+            <url>http://nexus.tuling123.com/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Snapshots</name>
+            <url>http://nexus.tuling123.com/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
     <build>
         <plugins>
             <!--去除jar包中的配置文件信息-->
@@ -41,9 +65,55 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.2</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <aggregate>true</aggregate>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.17</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/manualtest/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
     <dependencies>
+        <dependency>
+            <groupId>com.turing.nlp</groupId>
+            <artifactId>nlp-hanlp-scan-pen</artifactId>
+            <version>1.2.20-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <!--平台日志服务-->
         <dependency>
             <groupId>com.turing.platform</groupId>
@@ -55,16 +125,6 @@
             <artifactId>similarity-dubbo-client</artifactId>
             <version>1.2.3-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.turing.nlp</groupId>
-            <artifactId>knowledgegraph-dubbo-client</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-		<dependency>
-			<groupId>com.turing</groupId>
-			<artifactId>nlp-channel-ledi-dubbo-api</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
@@ -81,11 +141,6 @@
             <version>0.7</version>
         </dependency>
         <dependency>
-            <groupId>com.turing.jietong.voice</groupId>
-            <artifactId>turing-voice-jietong</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>com.turing.web.module</groupId>
             <artifactId>turingapi-authorization-dubbo-api</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -96,25 +151,9 @@
             <version>2.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.turing</groupId>
-            <artifactId>turing-base</artifactId>
-            <version>2.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>com.turing.nlp</groupId>
             <artifactId>nlp-memory-dubbo-api</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.aliyun.oss</groupId>
-            <artifactId>aliyun-sdk-oss</artifactId>
-            <version>2.5.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpclient</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -137,11 +176,6 @@
             <version>2.0.2-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-        <dependency>
             <groupId>com.turing.bmu.module</groupId>
             <artifactId>transcode-api</artifactId>
             <version>2.2-SNAPSHOT</version>
@@ -149,6 +183,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <version>4.13.2</version>
             <scope>compile</scope>
         </dependency>
 

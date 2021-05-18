@@ -1,4 +1,4 @@
-package com.turing.ledi.dubbo;
+package com.turing.dubbo;
 
 import com.alibaba.fastjson.JSON;
 import com.turing.bmu.transcode.api.TranscodeService;
