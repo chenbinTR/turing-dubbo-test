@@ -23,7 +23,7 @@
     <!-- chat -->
     <dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="dubbo://47.93.47.187:23001" id="chatService" timeout="2000" version="2.0"/>
     <!--<dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="dubbo://59.110.171.164:23001" id="chatService" timeout="2000" version="2.0"/>-->
-    <!--<dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="47.93.180.98:23001" id="chatService" timeout="2000" version="2.0"/>-->
+<!--    <dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="47.93.180.98:23001" id="chatService" timeout="2000" version="2.0"/>-->
 <!--    <dubbo:reference interface="com.turing.service.chat.ChatService" check="false" url="59.110.19.217:23001" id="chatService" timeout="2000" version="2.0"/>-->
 
     <!-- similarity -->
