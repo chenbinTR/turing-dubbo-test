@@ -34,7 +34,7 @@ public class ChatTest {
 
     @Test
     public void testSingleChat() {
-        ChatResult chatResult = reqChat("我想吃牙膏");
+        ChatResult chatResult = reqChat("我刚才拖地了");
         System.out.println(chatResult.getAnswer());
         System.out.println(chatResult.getAppId() + "\t" + chatResult.getParseType());
         System.out.println(chatResult.getAnswerEmotionId());
@@ -143,7 +143,7 @@ public class ChatTest {
         UserInfo userInfo = new UserInfo();
         userInfo.setAccount("tuling123@uzoo.cn");
         userInfo.setUserId("110002");
-        userInfo.setChannelType(1);
+        userInfo.setChannelType(0);
         chatRequest.setUserInfo(userInfo);
 
         RobotSetting robotSetting = new RobotSetting();
