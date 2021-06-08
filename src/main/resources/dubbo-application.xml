@@ -38,8 +38,8 @@
     <!--<dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.94.59.188:30880" id="semanticService" version="1.1.2"/>-->
 
     <!-- multi-semantic -->
-<!--    <dubbo:reference interface="com.turing.semantic.service.api.MultiSemanticService" url="dubbo://47.93.47.187:30882" id="multiSemanticService" version="1.0"/>-->
-    <dubbo:reference interface="com.turing.semantic.service.api.MultiSemanticService" url="dubbo://47.93.61.130:30882" id="multiSemanticService" version="1.0"/>
+    <dubbo:reference interface="com.turing.semantic.service.api.MultiSemanticService" url="dubbo://47.93.47.187:30882" id="multiSemanticService" version="1.0"/>
+<!--    <dubbo:reference interface="com.turing.semantic.service.api.MultiSemanticService" url="dubbo://47.93.61.130:30882" id="multiSemanticService" version="1.0"/>-->
 <!--        <dubbo:reference interface="com.turing.semantic.service.api.MultiSemanticService" url="dubbo://8.140.155.105:30882" id="multiSemanticService" version="1.1.2"/>-->
 <!--    <dubbo:reference interface="com.turing.semantic.service.api.SemanticService" url="dubbo://47.94.59.188:30880" id="semanticService" version="1.1.2"/>-->
 
