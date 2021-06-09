@@ -35,7 +35,7 @@ public class SemanticTest extends BaseTest {
         MultiSemanticService service = context.getBean("multiSemanticService", MultiSemanticService.class);
         List<Pattern> var2 = new ArrayList<>();
         var2.add(Pattern.SDEP);
-        List<MultiSegment> multiSegmentList = service.multiSegmentEnglish("i'll get the work");
+        List<MultiSegment> multiSegmentList = service.multiSegmentEnglish("w lucky is in the toilet.he is washing his");
         System.out.println(JSON.toJSONString(multiSegmentList));
     }
 
