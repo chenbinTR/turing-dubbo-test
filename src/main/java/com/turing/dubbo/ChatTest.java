@@ -34,7 +34,7 @@ public class ChatTest {
 
     @Test
     public void testSingleChat() {
-        ChatResult chatResult = reqChat("我刚才拖地了");
+        ChatResult chatResult = reqChat("我想端午节到重庆去玩。");
         System.out.println(chatResult.getAnswer());
         System.out.println(chatResult.getAppId() + "\t" + chatResult.getParseType());
         System.out.println(chatResult.getAnswerEmotionId());
@@ -141,7 +141,7 @@ public class ChatTest {
         chatRequest.setRequestId("1");
 
         UserInfo userInfo = new UserInfo();
-        userInfo.setAccount("tuling123@uzoo.cn");
+        userInfo.setAccount("hagservice@huawei.com");
         userInfo.setUserId("110002");
         userInfo.setChannelType(0);
         chatRequest.setUserInfo(userInfo);
